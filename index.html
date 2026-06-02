@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CPIT-455 Software Engineering II Portfolio - HIMMA Curriculum">
+    <title>Portfolio | [Nazeh] — CPIT-455</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #64748b;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --accent: #f59e0b;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning-bg: #fffbeb;
+            --warning-border: #fcd34d;
+            --warning-text: #92400e;
+            --instructor-bg: #fef3c7;
+            --instructor-border: #fbbf24;
+            --instructor-text: #92400e;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: var(--light);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, #334155 100%);
+            color: white;
+            padding: 50px 30px;
+            text-align: center;
+            border-radius: 12px;
+            margin: 30px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        header .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        header .tagline {
+            background: var(--accent);
+            color: var(--dark);
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-bottom: 25px;
+        }
+
+        nav {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--accent);
+        }
+
+        /* Section Styles */
+        section {
+            background: white;
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        section h2 {
+            color: var(--dark);
+            font-size: 2em;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--primary);
+            display: inline-block;
+        }
+
+        section h3 {
+            color: var(--dark);
+            font-size: 1.4em;
+            margin: 25px 0 15px 0;
+        }
+
+        section h4 {
+            color: var(--secondary);
+            font-size: 1.1em;
+            margin: 15px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        ul {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 25px 0;
+        }
+
+        /* Card Styles */
+        .card {
+            border: 1px solid #e2e8f0;
+            padding: 25px;
+            border-radius: 8px;
+            background: #fafafa;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .card h4 {
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        /* Badge Styles */
+        .badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        .badge.accent {
+            background: var(--accent);
+            color: var(--dark);
+        }
+
+        .badge.success {
+            background: var(--success);
+        }
+
+        /* Photo Section */
+        .photo-section {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .photo-section img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid var(--primary);
+            object-fit: cover;
+            background: #e2e8f0;
+        }
+
+        .photo-section .photo-placeholder {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px dashed var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px auto;
+            color: var(--secondary);
+            font-weight: 600;
+            background: #f1f5f9;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .stat-item {
+            background: var(--dark);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        .stat-item span {
+            color: var(--accent);
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+
+        /* Evidence Cards */
+        .evidence-card {
+            border-left: 5px solid var(--primary);
+            background: #f8fafc;
+            margin-bottom: 25px;
+        }
+
+        .evidence-card h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        .evidence-card .week-badge {
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .evidence-card .topic {
+            color: var(--secondary);
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .evidence-card .evidence-box {
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+
+        /* Instructor Only Section */
+        .instructor-only {
+            background: var(--instructor-bg);
+            border: 2px solid var(--instructor-border);
+            color: var(--instructor-text);
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+            font-size: 0.9em;
+            display: none; /* Students should keep this hidden */
+        }
+
+        .instructor-only strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background: var(--warning-bg);
+            border: 2px dashed var(--warning-border);
+            color: var(--warning-text);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .warning-box strong {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            margin: 5px;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn.accent {
+            background: var(--accent);
+            color: var(--dark);
+        }
+
+        .btn.accent:hover {
+            background: #d97706;
+        }
+
+        .btn.success {
+            background: var(--success);
+        }
+
+        .btn.success:hover {
+            background: #059669;
+        }
+
+        /* Project Section Specific */
+        .project-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .metric-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .metric-card .icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .metric-card h4 {
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .metric-card p {
+            font-size: 0.9em;
+            color: var(--secondary);
+            margin: 0;
+        }
+
+        /* Reflection Section */
+        .reflection-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-left: 5px solid var(--accent);
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .reflection-card h4 {
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .reflection-card blockquote {
+            background: white;
+            padding: 20px;
+            border-radius: 6px;
+            border-left: 3px solid var(--accent);
+            font-style: italic;
+            color: var(--secondary);
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px 20px;
+            background: var(--dark);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.2s ease;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            background: #334155;
+        }
+
+        .contact-btn.linkedin { background: #0077b5; }
+        .contact-btn.github { background: #333; }
+        .contact-btn.email { background: var(--primary); }
+        .contact-btn.cv { background: var(--success); }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--secondary);
+            border-top: 1px solid #e2e8f0;
+            margin-top: 50px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        footer .himma-badge {
+            display: inline-block;
+            background: var(--dark);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        /* Placeholder Text */
+        .placeholder {
+            color: #94a3b8;
+            font-style: italic;
+            background: #f1f5f9;
+            padding: 3px 8px;
+            border-radius: 3px;
+        }
+
+        /* Privacy Notice */
+        .privacy-notice {
+            background: #fef3c7;
+            border: 1px solid #fbbf24;
+            color: #92400e;
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            margin: 20px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            section {
+                padding: 25px 20px;
+            }
+
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav a {
+                width: 100%;
+                text-align: center;
+                max-width: 300px;
+            }
+
+            .stats-bar {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                max-width: 100%;
+            }
+
+            section {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                page-break-inside: avoid;
+            }
+
+            nav, .btn, .contact-btn {
+                display: none;
+            }
+
+            .instructor-only {
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================ -->
+    <!-- HEADER SECTION -->
+    <!-- ============================================ -->
+    <header>
+        <!-- ⚠️ EDIT: Replace with your full name -->
+        <h1>Portfolio | Nazeh Kattan</h1>
+        
+        <p class="subtitle">CPIT-455 Software Engineering II · HIMMA Curriculum</p>
+        
+        <div class="tagline">🔷 BUILD YOUR PROOF</div>
+        
+        <nav>
+            <a href="#about">👤 About</a>
+            <a href="#evidence">📂 Evidence</a>
+            <a href="#project">🚀 Project</a>
+            <a href="#reflection">🧠 Reflection</a>
+            <a href="#contact">🤝 Contact</a>
+        </nav>
+    </header>
+
+    <!-- ============================================ -->
+    <!-- SECTION 01: ABOUT ME -->
+    <!-- ============================================ -->
+    <section id="about">
+        <h2>👤 About Me</h2>
+        
+        <div class="grid">
+            <div>
+                <!-- ⚠️ EDIT: Write your personal bio here -->
+                <p>I am a Information Technology student at <span class="placeholder">King Abdulaziz University</span>, currently enrolled in <strong>CPIT-455 Software Engineering II</strong> under the HIMMA curriculum — a program that moves beyond passive content toward active proof.</p>
+                
+                <p>My goal is to become not just a programmer, but an engineer who understands dependability, safety, reliability, and the human responsibility that comes with building systems others trust.</p>
+                
+                <p>This portfolio represents every week of effort — small proofs that compound into professional-grade evidence of real engineering thinking.</p>
+                
+                <div class="stats-bar">
+                    <div class="stat-item"><span>16</span> Weeks</div>
+                    <div class="stat-item"><span>V2</span> Iteration</div>
+                    <div class="stat-item"><span>3</span> Lectures/Week</div>
+                    <div class="stat-item"><span>1</span> Project</div>
+                </div>
+
+                <h3>🎓 Academic Information</h3>
+                <ul>
+                    <!-- ⚠️ EDIT: Fill in your academic details -->
+                    <li><strong>University:</strong> <span class="placeholder"> King Abdulaziz University</span></li>
+                    <li><strong>Major:</strong> <span class="placeholder"> Information Technology</span></li>
+                    <li><strong>Year:</strong> <span class="placeholder"> 2026</span> — Semester <span class="placeholder">Seconde</span></li>
+                    <li><strong>Course:</strong> CPIT-455 Software Engineering II</li>
+                    <li><strong>Domain Focus:</strong> Dependable Systems &amp; Safety-Critical Design</li>
+                </ul>
+            </div>
+
+            <div class="photo-section">
+                <!-- ⚠️ EDIT: Replace src with your photo file path (e.g., "photo.jpg") -->
+                <!-- ⚠️ IMPORTANT: Place your photo in the same folder as this HTML file -->
+                <img src="me.jpg" alt="Nazeh Kattan">
+                    
+                </div>
+                <!-- Uncomment below and add your photo path -->
+                <!-- <img src="your-photo.jpg" alt="Student Photo"> -->
+                
+                <h3>🛠 Technical Skills</h3>
+                <!-- ⚠️ EDIT: List your actual skills -->
+                <div>
+                    <span class="badge">Software Architecture</span>
+                    <span class="badge">Fault Tree Analysis</span>
+                    <span class="badge">Risk Assessment</span>
+                    <span class="badge">ALARP</span>
+                    <span class="badge">Safety Engineering</span>
+                    <span class="badge">Dependability</span>
+                    <span class="badge">Python</span>
+                    <span class="badge">Java</span>
+                    <span class="badge">UML</span>
+                    <span class="badge">V&amp;V</span>
+                    <span class="badge">System Design</span>
+                    <span class="badge accent">Add Your Skills</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 02: WEEKLY EVIDENCE -->
+    <!-- ============================================ -->
+    <section id="evidence">
+        <h2>📂 Weekly Evidence</h2>
+        
+        <p><em>Evidence = Clear Thinking, not perfection. Each week I produce a small proof of learning — a focused answer, a diagram, a test case, or a self-reflection. This is the record.</em></p>
+
+        <div class="privacy-notice">
+            <strong>📌 Privacy Notice:</strong> Do not include sensitive personal information (ID numbers, home addresses, phone numbers) in your evidence. Use your university email for contact.
+        </div>
+
+        <!-- WEEK 01 -->
+        <div class="card evidence-card">
+            <span class="week-badge">WEEK 01</span>
+            <h3>CLASS 00 · The HIMMA System</h3>
+            <p class="topic"><strong>Topics:</strong> Evidence, Portfolio, Iteration, H-Stack Mindset</p>
+            
+            <div class="evidence-box">
+                <h4>My Evidence (V2):</h4>
+                <!-- ⚠️ EDIT: Describe your specific evidence for this week -->
+                <p class="placeholder">"Traditional cramming leads to forgetting information, while in the Himma system it leads to building professional competence through small tasks and then developing them, the goal is not academic success, but building a portfolio that serves as 
+                  professional proof for the job market. My reflection I feel enthusiastic about the Himma system because it addresses the issue of forgetting after completing the course, as it helps solidify the information. The idea of submitting V1, having the professor correct and point out the mistakes, and then correcting 
+                  them in V2, all eliminate the fear of making mistakes and allow me to focus on understanding rather than the grade."</p>
+            </div>
+
+            <!-- ⚠️ DO NOT EDIT: Instructor grading section (keep hidden) -->
+            <div class="instructor-only">
+                <strong>📝 Instructor Score:</strong> [Leave Blank — For Instructor Use Only]
+                <br><strong>Feedback:</strong> _________________________________
+            </div>
+        </div>
+
+        <!-- WEEK 02 -->
+        <div class="card evidence-card">
+            <span class="week-badge">WEEK 02</span>
+            <h3>CLASS 01 · Domain Spine: Dependability</h3>
+            <p class="topic"><strong>Topics:</strong> 5 Attributes (Availability, Reliability, Safety, Security, Resilience), Sources of Failure</p>
+            
+            <div class="evidence-box" style="border-left: 4px solid #2c5282;">
+                <h4>My Evidence (V2):</h4>
+                <h5>Selected System: Hospital Portal System (Mentcare Platform)</h5>
+                
+                <div style="margin-top: 15px;">
+                    <h5><strong>Required Dependability Attributes</strong></h5>
+                    <ul>
+                        <li><strong>Available:</strong> Patients can access the portal anytime.</li>
+                        <li><strong>Reliable:</strong> Medical records and appointments must be accurate.</li>
+                        <li><strong>Secure:</strong> Protect patient data and privacy.</li>
+                        <li><strong>Maintainable:</strong> Easy to update and fix issues.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>System Risks Matrix</strong></h5>
+                    <ul>
+                        <li><strong>Hardware Risks:</strong> Server or power failure.</li>
+                        <li><strong>Software Risks:</strong> System crash or wrong medical data displayed.</li>
+                        <li><strong>Operational Risks:</strong> Staff enters incorrect patient information.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>Architectural Dependability Strategy</strong></h5>
+                    <ul>
+                        <li><strong>Redundancy:</strong> Backup servers and power supply.</li>
+                        <li><strong>Testing:</strong> Test appointments and record systems.</li>
+                        <li><strong>Security:</strong> Use encryption, strong passwords, and firewalls.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+            <div class="instructor-only">
+                <strong>📝 Instructor Score:</strong> [Leave Blank — For Instructor Use Only]
+            </div>
+        </div>
+
+        <!-- WEEK 03 -->
+        <div class="card evidence-card">
+            <span class="week-badge">WEEK 03</span>
+            <h3>CLASS 02 · Reliability Engineering</h3>
+            <p class="topic"><strong>Topics:</strong> Fault → Error → Failure, POFOD, ROCOF, AVAIL Metrics, 8 Commandments</p>
+            
+            <div class="evidence-box" style="border-left: 4px solid #2c5282;">
+                <h4>My Evidence (V2):</h4>
+                <h5>System: Online Banking System</h5>
+               <div style="margin-top: 15px;">
+                    <h5><strong>Define the Profile</strong></h5>
+                    <ul>
+                        <li><strong>Who uses the system:</strong> Customers, Bank employees, and Administrators.</li>
+                        <li><strong>Usage pattern:</strong> Continuous and transaction heavy, with massive peaks during salary days and bill deadlines.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>Choose the Metric</strong></h5>
+                    <p style="font-size: 0.95em; margin-bottom: 5px;"><strong>ROCOF (Rate of Occurrence of Failures)</strong></p>
+                    <p style="font-size: 0.95em; margin-top: 0;">In banking, the priority is high transaction density and Integrity. We have zero tolerance for balance errors or silent failures where a transaction might be processed incorrectly without a crash therefore, minimizing the frequency of failures over time is the most critical goal.</p>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>Propose Strategy</strong></h5>
+                    <p style="font-size: 0.95em; margin-bottom: 5px;"><strong>Diversity</strong></p>
+                    <p style="font-size: 0.95em; margin-top: 0;">I will implement the transaction processing engine using two different software versions developed by independent teams.</p>
+                    <p style="font-size: 0.95em;">The goal is the architectural decision protects the system against design and software bugs if one version has a logic error in calculating a transfer, the other version acts as a Fault Tolerance mechanism to ensure the bank's data integrity is never compromised at runtime.</p>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>Diagram:</strong></h5>
+                    
+                    <div style="width: 100%; text-align: center; margin: 15px 0;">
+                        <img src="3.png" alt="Diversity and Fault Tolerance Transaction Processing Diagram" style="width: 100%; max-width: 800px; height: auto; border: 1px solid #ccc; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    </div>
+                
+
+            </div>
+        </div>
+
+            <div class="instructor-only">
+                <strong>📝 Instructor Score:</strong> [Leave Blank — For Instructor Use Only]
+                <br><strong>Homework Due:</strong> Week 7
+            </div>
+        </div>
+
+       <div class="card evidence-card">
+            <span class="week-badge">WEEK 04 </span>
+            <h3>CLASS 03 · Safety Engineering</h3>
+            <p class="topic"><strong>Topics:</strong> Hazard → Accident → Damage, ALARP Triangle, Fault Tree Analysis, Safety Case</p>
+            
+            <div class="evidence-box">
+                <h4>My Evidence (V2): Portfolio Task – The Safety Argument (Autonomous Car Brake)</h4>
+                
+                <div style="margin-top: 15px;">
+                    <h5><strong>1. Hazard Identification</strong></h5>
+                    <ul>
+                        <li><strong>System Component:</strong> Autonomous Car Braking Subsystem</li>
+                        <li><strong>Hazard:</strong> Failure to apply emergency braking when an obstacle is detected in the vehicle's path.</li>
+                        <li><strong>Potential Accident:</strong> High-speed collision with another vehicle or pedestrian.</li>
+                        <li><strong>Potential Damage / Loss:</strong> Severe physical injury, fatalities, or complete destruction of the vehicle.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>2. Risk Assessment Matrix</strong></h5>
+                    <p style="font-size: 0.9em; color: #555; font-style: italic;">Risk Quantification ($\text{Risk} = \text{Probability} + \text{Severity}$)</p>
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 0.95em;">
+                        <thead>
+                            <tr style="background-color: #f2f2f2; border-bottom: 2px solid #ccc;">
+                                <th style="padding: 8px; text-align: left; border: 1px solid #ddd;">Hazard Scenario</th>
+                                <th style="padding: 8px; text-align: left; border: 1px solid #ddd;">Probability</th>
+                                <th style="padding: 8px; text-align: left; border: 1px solid #ddd;">Severity</th>
+                                <th style="padding: 8px; text-align: left; border: 1px solid #ddd;">Verdict / Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;"><strong>Failure to decelerate/stop during an obstacle encounter</strong></td>
+                                <td style="padding: 8px; border: 1px solid #ddd; vertical-align: top; color: #b76e00;"><strong>Medium</strong><br><small>(Due to potential sensor or software glitches)</small></td>
+                                <td style="padding: 8px; border: 1px solid #ddd; vertical-align: top; color: #cd0000;"><strong>Catastrophic / High</strong><br><small>(Can cause loss of life)</small></td>
+                                <td style="padding: 8px; border: 1px solid #ddd; vertical-align: top; background-color: #ffe6e6; color: #cd0000;"><strong>Intolerable</strong><br><small>(Must be mitigated immediately; cannot be tolerated)</small></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>3. Safety Requirement ("Shall Not")</strong></h5>
+                    <blockquote style="margin: 10px 0; padding: 10px 15px; border-left: 4px solid #cd0000; background-color: #fafafa; font-style: italic;">
+                        <strong>SR1:</strong> The braking system <strong>shall not</strong> delay or suppress an emergency braking command when the distance to a detected obstacle falls below the critical safety threshold.
+                    </blockquote>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>4. Visual Proof: Fault Tree Analysis (FTA)</strong></h5>
+                    <p style="font-size: 0.95em; margin-bottom: 12px;">A top-down deductive analysis diagram mapping potential causal paths to system-level braking failure:</p>
+                    
+                    <div style="width: 100%; text-align: center; margin: 15px 0;">
+                        <img src="4.png" alt="4. Visual Proof: Fault Tree Analysis (FTA) – Mapping Causal Paths to Autonomous Braking Failure" style="width: 100%; max-width: 850px; height: auto; border: 1px solid #ccc; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="instructor-only">
+                <strong>📝 Instructor Score:</strong> [Leave Blank — For Instructor Use Only]
+                <br><strong>Midterm Exam 1:</strong> Week 8 (30%)
+            </div>
+        </div>
+
+        <!-- WEEK 05 -->
+        <div class="card evidence-card">
+            <span class="week-badge">WEEK 05</span>
+            <h3>CLASS 04 · Security Engineering</h3>
+            <p class="topic"><strong>Topics:</strong> Confidentiality, Integrity, Availability (CIA Triad), Security Assurance Case, Threat Analysis, Misuse Cases</p>
+            
+            <h4>My Evidence (V2): Portfolio Task – The Security Assurance Case (Mentcare System)</h4>
+                
+                <div style="margin-top: 15px;">
+                    <h5><strong>1. System Description</strong></h5>
+                    <p style="font-size: 0.95em;">To protect safety-critical medical data from exploitation, the system implements a Distributed Asset Architecture combined with a Layered Protection Pattern:</p>
+                    <ul>
+                        <li><strong>Platform-Level:</strong> Enforces system authentication, firewalls, and file integrity management.</li>
+                        <li><strong>Application-Level:</strong> Controls database login, strict multi-factor authentication (MFA), transaction management, and automated database recovery.</li>
+                        <li><strong>Record-Level:</strong> Implements dynamic record access authorization and end-to-end record encryption ($AES\text{-}256\text{-}GCM$).</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>2. Threat Analysis & Attacker Mechanics</strong></h5>
+                    <p style="font-size: 0.95em;">Unlike safety boundaries which handle accidental failures, security handles intelligent, adaptive adversaries operating in a hostile environment. The primary threat vector identified is <strong>Unauthorized Privilege Escalation & Data Exfiltration Attack</strong>:</p>
+                    <ul>
+                        <li><strong>Intended Use Case:</strong> An authorized Medical Receptionist logs into the terminal to view standard patient info or execute a legitimate data transfer.</li>
+                        <li><strong>Misuse Case 1 (Impersonation):</strong> The Attacker attempts to bypass frontend boundaries by stealing credentials or intercepting sessions to impersonate medical staff.</li>
+                        <li><strong>Misuse Case 2 (Man-in-the-Middle):</strong> The Attacker actively deploys sniffing tools to intercept unencrypted local network transfers.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>3. Design Rationale (Security Control Funnel)</strong></h5>
+                    <p style="font-size: 0.95em;">The architecture addresses the Security Control Funnel objectives through structural containment:</p>
+                    <ul>
+                        <li><strong>Vulnerability Avoidance:</strong> Replicating critical assets across independent distributed nodes ensures that if a localized node faces a severe Denial of Service (DoS) attack, operation immediately shifts to ensure continuous <strong>Availability</strong>.</li>
+                        <li><strong>Fail-Secure Architecture:</strong> If application authorization fails or database services collapse, the system defaults to a locked, fully encrypted state.</li>
+                        <li><strong>Compartmentalization:</strong> Limiting the blast radius ensuring that an adversary cracking the platform layer cannot instantly read records without cracking individual Record-Level encryption (protecting <strong>Confidentiality & Integrity</strong>).</li>
+                    </ul>
+                </div>
+
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>4. Verification & Validation (V&V Results)</strong></h5>
+                    <p style="font-size: 0.95em;">Proving a negative ("never breached") is impossible; therefore, we build circumstantial, verifiable evidence:</p>
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 0.95em;">
+                        <thead>
+                            <tr style="background-color: #f2f2f2; border-bottom: 2px solid #ccc;">
+                                <th style="padding: 8px; text-align: left; border: 1px solid #ddd;">V&V Vector</th>
+                                <th style="padding: 8px; text-align: left; border: 1px solid #ddd;">Verifiable Evidence Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;"><strong>Static Analysis Reports</strong></td>
+                                <td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;">Automated tools scanned code repositories to ensure strict data input formats are validated, eliminating risks of buffer overflows or SQL injections.</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;"><strong>Penetration Testing Logs</strong></td>
+                                <td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;">Ethical hackers simulated adversarial behavior trying to bypass controls. Security rules held firm against brute-force due to automated account lockouts (Intrusion Detection Requirement).</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;"><strong>Immutable Audit Trails</strong></td>
+                                <td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;">System action logs successfully traced every access token signature, guaranteeing Nonrepudiation across all sensitive transactions.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+            <div class="instructor-only">
+                <strong>📝 Instructor Score:</strong> [Leave Blank — For Instructor Use Only]
+                <br><strong>Midterm Exam 1:</strong> Week 8 (30%)
+            </div>
+        </div>
+
+        <!-- WEEK 06 -->
+        <div class="card evidence-card">
+            <span class="week-badge">WEEK 06</span>
+            <h3>CLASS 05 · Resilience Engineering</h3>
+            <p class="topic"><strong>Topics:</strong> Fault → Error → Failure, Recognition & Resistance (R&R) Strategies, Diversity & Decoupling, Sociotechnical Factors (Human-in-the-Loop)</p>
+            
+            <div class="evidence-box">
+                <h4>My Evidence (V2): Portfolio Task – Resilience Case (Mentcare System)</h4>
+                
+                <div style="margin-top: 15px;">
+                    <h5><strong>1. Analysis of the Failure Chain </strong></h5>
+                    <p style="font-size: 0.95em;">To design a resilient system, we map the internal mechanics of a breakdown through three distinct evolutionary phases:</p>
+                    <ul>
+                        <li><strong>The Fault (Static Defect):</strong> A race condition defect exists in the data synchronization module between the local workstation cache and the master database server.</li>
+                        <li><strong>The Error (Incorrect Internal State):</strong> When concurrent updates occur during peak clinic hours, the local cache memory locations become corrupted, producing invalid data checksum values in the patient record state.</li>
+                        <li><strong>The Failure (Deviation from Service):</strong> The system completely loses access to the active patient database queue. Medical receptionists and doctors experience a severe system outage where files cannot be queried, forcing clinical workflows to freeze.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>2. Recognition & Resistance (R&R) Strategies Matrix</strong></h5>
+                    <p style="font-size: 0.95em;">The system implements structured automated strategies to intercept the failure chain and maintain critical services while in a degraded state:</p>
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 0.95em;">
+                        <thead>
+                            <tr style="background-color: #f2f2f2; border-bottom: 2px solid #ccc;">
+                                <th style="padding: 8px; text-align: left; border: 1px solid #ddd; width: 25%;">Event</th>
+                                <th style="padding: 8px; text-align: left; border: 1px solid #ddd; width: 35%;">Recognition Technique</th>
+                                <th style="padding: 8px; text-align: left; border: 1px solid #ddd; width: 40%;">Resistance Strategy</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;"><strong>Database Network Outage</strong></td>
+                                <td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;"><strong>1. Watchdog Timers:</strong> Client terminals maintain a watchdog timer that automatically flags a timeout if data queries take longer than a defined threshold.</td>
+                                <td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;"><strong>1. Local Standalone Cache:</strong> Workstations mirror a read-only local copy of critical emergency records, allowing basic lookups when offline.</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;"><strong>Malicious Intrusion Spike</strong></td>
+                                <td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;"><strong>2. Pattern Matchers:</strong> Background monitors detect anomalous high-frequency record modifications that bypass front defenses.</td>
+                                <td style="padding: 8px; border: 1px solid #ddd; vertical-align: top;"><strong>2. Dynamic Rate Limiting:</strong> The system throttles the affected workstation terminal, isolating the anomaly while keeping neighboring clinics fully active.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>3. Redundancy, Diversity, & Decoupling Controls</strong></h5>
+                    <p style="font-size: 0.95em;">To eliminate common-mode crashes where a single structural flaw brings down backup controls, the infrastructure leverages explicit diversity:</p>
+                    <ul>
+                        <li><strong>Architectural Diversity:</strong> Because the standalone backup cache client is written in a different programming language and runs on an isolated operating system stack relative to the master server backend, a software exploit or a memory bug targeting the main server cannot exploit the local backup client.</li>
+                        <li><strong>Decoupled Triggers:</strong> The automatic alarm triggers do not share code infrastructure with the synchronization engine, meaning a failure in data synchronization cannot cause a silent failure in attack recognition.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>4. The Sociotechnical Factor: Human-in-the-Loop Override</strong></h5>
+                    <p style="font-size: 0.95em;">Automation is bounded; when black-swan events compromise algorithmic logic, humans serve as the foundational source of system adaptability:</p>
+                    <ul>
+                        <li><strong>The Operational Trigger:</strong> If an anomaly cascade triggers an automatic server lockout, the system halts automated syncing to prevent database pollution, transitioning into a Fail-Secure State.</li>
+                        <li><strong>The Sociotechnical Intervention:</strong> A certified database administrator steps in via a dedicated management terminal. Guided by Explainable AI (XAI) metrics that expose why the checksums failed, the human expert overrides the locked state.</li>
+                        <li><strong>The Resilience Continuity:</strong> Using manual role sharing and clinical workstation capacity, the administrator reroutes operations through an air-gapped terminal connection, verifying local cached patient records line-by-line while technicians repair the master node backend safely. This hybrid loop guarantees uncompromised care delivery.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+            <div class="instructor-only">
+                <strong>📝 Instructor Score:</strong> [Leave Blank — For Instructor Use Only]
+                <br><strong>Midterm Exam 1:</strong> Week 8 (30%)
+            </div>
+        </div>
+
+        <!-- WEEK 07 -->
+        <div class="card evidence-card">
+            <span class="week-badge">WEEK 07</span>
+            <h3>CLASS 06 · Software Reuse</h3>
+            <p class="topic"><strong>Topics:</strong> The Reuse Landscape, Software Product Lines (SPL), Component-Based Software Engineering, Validation Frameworks (The Ariane 5 Lesson)</p>
+            
+            <div class="evidence-box">
+                <h4>My Evidence (V2): Portfolio Task – The Reuse Strategy (Mentcare System)</h4>
+                
+                <div style="margin-top: 15px;">
+                    <h5><strong>Positioning in the Reuse Landscape</strong></h5>
+                    <p style="font-size: 0.95em;">From the established Reuse Landscape, the Software Product Line (SPL) approach is selected as the strategic integration model for the Mentcare Patient Database System.</p>
+                    
+                    <p style="font-size: 0.95em; margin-bottom: 5px;"><strong>Planning Factors Justification:</strong></p>
+                    <ul>
+                        <li><strong>Software Criticality & Dependability:</strong> Mentcare manages safety critical and highly private healthcare operations developing a complex medical platform entirely from scratch injects extreme process risk, adopting an SPL leverages a structurally consistent architecture and accumulates domain expertise across medical product lines, massively boosting overall platform dependability.</li>
+                        <li><strong>Development Schedule & Resource Efficiency:</strong> Building standard clinical management components (identity providers, auditing systems, or basic database interaction schemas) creates unnecessary drag, reusing an asset family drastically slashes development schedules and minimizes testing expenditures.</li>
+                        <li><strong>Team Skills & Background:</strong> By locking down a hardened, pre validated core architecture, the engineering team can focus their technical specializations on designing resilient, domain specific health modules rather than handling boilerplate integration code.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>Product Line Architecture (SPL) Blueprint</strong></h5>
+                    <p style="font-size: 0.95em;">The Mentcare implementation builds upon an application family model, separating immutable logic from dynamic, context-specific behaviors:</p>
+                    
+                    <p style="font-size: 0.95em; margin-bottom: 5px; padding-left: 10px;"><strong>A. Core Components (Generic & Unmodified)</strong></p>
+                    <p style="font-size: 0.9em; color: #555; padding-left: 10px; margin-top: 0;">These base infrastructure systems remain permanently sealed and unchanged across all deployment configurations to protect core structural integrity:</p>
+                    <ul style="padding-left: 30px;">
+                        <li><strong>The Watchdog Security Subsystem:</strong> The low-level execution thread that manages timeout monitoring clocks to instantly trigger autonomous error containment procedures when system hangs occur.</li>
+                        <li><strong>The Record-Level Encryption Engine:</strong> The underlying cryptographic hardware interface driving data privacy boundaries using unyielding AES-256 operations.</li>
+                        <li><strong>Immutable Transaction Log Ledger:</strong> The core system that logs and appends sequential, unerasable system entries to guarantee total nonrepudiation and transaction rollbacks during data restoration.</li>
+                    </ul>
+
+                    <p style="font-size: 0.95em; margin-bottom: 5px; padding-left: 10px; margin-top: 15px;"><strong>B. Specialized Components (Modified & Configured)</strong></p>
+                    <p style="font-size: 0.9em; color: #555; padding-left: 10px; margin-top: 0;">These domain components are modified, swapped, or dynamically parameterized to map tightly to specific clinic layout mandates or unique user profiles:</p>
+                    <ul style="padding-left: 30px;">
+                        <li><strong>The Healthcare User Interface (UI):</strong> Dynamically customized using deployment-time component selection to show streamlined information configurations based on role. For instance, a Medical Receptionist UI highlights check in queues, while an emergency care profile UI surfaces red flag clinical vitals.</li>
+                        <li><strong>Input Formatting and Semantic Schema API Extensions:</strong> Modifiable structural plugins defining contextual validation parameters. This allows adjusting boundary checks to fit external localized medical data streams without risking platform-wide parsing failures.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>Validation & "The Ariane 5 Lesson"</strong></h5>
+                    <p style="font-size: 0.95em; margin-bottom: 5px;"><strong>The Threat:</strong></p>
+                    <p style="font-size: 0.95em; margin-top: 0;">The historic Ariane 5 Flight V501 disaster proved that reusing code from an older system Ariane 4 without validating it against the physics and execution parameters of the new environment can prompt a fatal arithmetic data overflow, causing silent diagnostic failure and system self-destruction.</p>
+                    
+                    <p style="font-size: 0.95em; margin-bottom: 5px;"><strong>Thorough Validation Plan:</strong></p>
+                    <p style="font-size: 0.9em; color: #555; margin-top: 0;">To guarantee that reused software components do not suffer from latent environment discrepancies, Mentcare institutes a Tri Level verification plan:</p>
+                    <ol>
+                        <li><strong>Full-Scale Boundary & Invariant Fuzzing:</strong> Reused modules undergo massive data-injection cycles simulating traffic loads far exceeding maximum clinical expectations, forcing any contextual conversion bugs out into the open before runtime.</li>
+                        <li><strong>Isolated Sandboxed Pen-Testing:</strong> Ethical engineering units run intensive exploit scenarios on reused libraries within an isolated container to ensure external components fail securely under duress.</li>
+                        <li><strong>Automated Environment Profiling:</strong> Tool-based checks audit memory layouts to verify that execution speeds or larger data streams on current hardware nodes do not cause structural cache breakdowns.</li>
+                    </ol>
+
+                    <p style="font-size: 0.95em; margin-bottom: 5px; margin-top: 15px;"><strong>Reliable Programming Commandment:</strong></p>
+                    <p style="font-size: 0.95em; margin-top: 0;">To eradicate data parsing risks at the absolute root, the engineering pipeline enforces the strict input specification ommandment:</p>
+                    <blockquote style="margin: 10px 0; padding: 10px 15px; border-left: 4px solid #4a5568; background-color: #fafafa; font-style: italic;">
+                        <strong>Commandment VII:</strong> "Thou shalt explicitly define, type-constrain, and parametercheck all incoming data boundaries before allowing execution inside a reused module; no raw integer cast or float-to-int conversion shall pass unchecked, eliminating data truncation or buffer errors entirely."
+                    </blockquote>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>Industry Alignment: Micro-services Architecture</strong></h5>
+                    <p style="font-size: 0.95em;">The Mentcare SPL strategic layout directly leverages Micro-services Architecture as its primary structural paradigm.</p>
+                    
+                    <p style="font-size: 0.95em; margin-bottom: 5px;"><strong>Resilience Goals Support</strong></p>
+                    <p style="font-size: 0.95em; margin-top: 0;">In Assignment 6, a major operational goal was establishing Failure Isolation and Rapid Recovery to handle internal cache errors or master server outages. Micro services fulfill this by decoupling system domains into completely autonomous, encapsulated containers:</p>
+                    <ul>
+                        <li><strong>Eliminating Hole Alignment (The Swiss Cheese Fix):</strong> If an arithmetic overflow or cache corruption strikes a specialized component within the User Interface Service, the technical failure is strictly contained within that unique component's blast radius.</li>
+                        <li><strong>Autonomous Resistance and Recovery Execution:</strong> Because the core Watchdog Security Subsystem and Transaction Log Subsystem run as isolated, air-gapped micro-services, they remain completely unaffected by errors in front-facing applications. The system seamlessly enters a failsecure state, allowing administrative experts to isolate and reset the corrupted frontend node without downing critical platform dependencies.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- WEEK 08 -->
+        <div class="card evidence-card">
+            <span class="week-badge">WEEK 08</span>
+           <h3>CLASS 07 · Component-Based Software Engineering (CBSE)</h3>
+            <p class="topic"><strong>Topics:</strong> Development with Reuse vs. for Reuse, Component Composition, Interface Design (Provides/Requires), Interface Compatibility Testing</p>
+            
+            <div class="evidence-box">
+                <h4>My Evidence (V2): Portfolio Task – CBSE Strategy (Mentcare System)</h4>
+                
+                <div style="margin-top: 15px;">
+                    <h5><strong>Planning Factors Justification</strong></h5>
+                    <ul>
+                        <li><strong>Development Schedule & Speed:</strong> Building robust database engines, encryption modules, and identity providers from scratch injects massive delays into the deployment pipeline, adopting development with reuse drastically compresses the development schedule, bypassing boilerplate infrastructure coding and fast-tracking the system toward active clinical deployment.</li>
+                        <li><strong>Market Availability of Components:</strong> Robust, industrial-grade software components that manage baseline operational needs (OAuth 2.0 authentication providers, Hibernate/Entity Framework ORM layers, and TLS-encrypted communication sockets) are widely available in the commercial and open-source marketplace. Leveraging these pre-tested components reduces duplicate work.</li>
+                        <li><strong>Reliability and Lower Process Risk:</strong> Reusing standardized components that have already undergone millions of execution hours across other high-assurance systems yields significantly higher initial dependability and lower process risk compared to raw, unvetted bespoke code.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>Component Composition & Interface Design</strong></h5>
+                    <p style="font-size: 0.95em;">The Mentcare system is partitioned into independent, decoupled components that encapsulate distinct responsibilities, adhering closely to Philippe Kruchten's principle of breaking large architectures into separate units that can be tested independently.</p>
+                    
+                    <p style="font-size: 0.95em; margin-bottom: 5px; padding-left: 10px;"><strong>Independent Components Blueprint:</strong></p>
+                    <ol style="padding-left: 25px; margin-top: 0;">
+                        <li><strong>Authentication Provider Component (C1):</strong> A pre-built identity module managing secure user login verification and access token generation.</li>
+                        <li><strong>Clinical Records Service Component (C2):</strong> An encapsulated business-logic layer executing querying, updating, and caching functions on health records.</li>
+                        <li><strong>Audit Ledger Component (C3):</strong> A hardened logging engine that records immutable administrative operations.</li>
+                    </ol>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>Interface Design</strong></h5>
+                    <p style="font-size: 0.95em;">Components interact strictly via formalized, contractual interfaces. These contracts decouple internal code implementations from external system dependencies, eliminating single points of structural failure.</p>
+                    
+                    <ul style="list-style-type: none; padding-left: 10px;">
+                        <li style="margin-bottom: 15px;">
+                            <strong>1. Authentication Provider Interface (IAuth)</strong>
+                            <ul style="list-style-type: circle; padding-left: 20px;">
+                                <li><strong>Provides Interface:</strong> Exposes methods for token validation and credential verification.</li>
+                                <li><strong>Requires Interface:</strong> Used by the Clinical Records Service to verify the active context of a medical receptionist or doctor prior to revealing any patient data stack.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>2. Audit Ledger Interface (IAudit)</strong>
+                            <ul style="list-style-type: circle; padding-left: 20px;">
+                                <li><strong>Provides Interface:</strong> Exposes an append-only transaction pipeline to structural data stores.</li>
+                                <li><strong>Requires Interface:</strong> Demanded by the Clinical Records Service to ensure that every lookup or modification is fully logged, enforcing nonrepudiation parameters automatically.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                    
+                    <div style="width: 100%; text-align: center; margin: 15px 0;">
+                        <img src="8.png" alt="Provides/Requires Component Interface Diagram" style="width: 100%; max-width: 750px; height: auto; border: 1px solid #ccc; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    </div>
+                
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>Validation & Risk Measurement</strong></h5>
+                    <p style="font-size: 0.95em; margin-bottom: 5px;"><strong>Integration Testing Plan:</strong></p>
+                    <p style="font-size: 0.95em; margin-top: 0;">Because composed components are developed separately, thorough integration testing is critical to identify architectural mismatches before runtime operations begin. Mentcare enforces a rigorous Black-Box Interface Verification Protocol:</p>
+                    
+                    <ol style="padding-left: 25px;">
+                        <li><strong>Interface Compatibility Testing:</strong> Verifies that parameter data types, exception structures, and buffer sizes perfectly align between calling components and providing interfaces, ensuring no type truncation occurs across component boundaries.</li>
+                        <li><strong>Asynchronous Protocol Sequence Checks:</strong> Simulates high-concurrency peak hours to verify that component interaction timings do not spawn unexpected deadlocks or race conditions.</li>
+                        <li><strong>Boundary & Invariant Fuzzing:</strong> Feeds corrupted or malformed parameters directly into component API entry points to confirm that sub-modules reject invalid configurations without triggering a system-wide crash.</li>
+                    </ol>
+                <h5><strong>Major Component Risk Handling:</strong></h5>
+                    <ul>
+                        <li><strong>The Identified Risk (Component Mismatch / Evolution Failure):</strong> A critical risk is Vendor Upstream Evolution Failure, which occurs when an off-the-shelf component vendor updates an external component interface (modifying the signature of IAuthentication), breaking downstream software compatibility and causing validation failures during integration.</li>
+                        <li><strong>Mitigation Strategy (The Adapter Pattern / Service Wrapper):</strong> To protect Mentcare from breaking changes, direct dependency on off the shelf components is strictly prohibited, the system isolates third party components behind a bespoke service wrapper Adapter Pattern. If a vendor changes an external interface signature, the core application code remains entirely untouched; developers only need to update the wrapper translation logic to match the new API structure, safely isolating the system's blast radius.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px; padding: 15px; background-color: #fafafa; border-left: 4px solid #3182ce; border-radius: 0 4px 4px 0;">
+                    <h5 style="margin-top: 0;"><strong>Industry Alignment: Composable AI</strong></h5>
+                    <p style="font-size: 0.95em; margin-top: 0;">The Mentcare component strategy aligns with the modern industry trend of Composable AI. Composable AI focuses on assembling modular, interchangeable AI components (such as dedicated disease classification models, NLP text parsers, and diagnostic assistants) via standardized APIs rather than building a single monolithic AI system.</p>
+                    
+                    <p style="font-size: 0.95em; margin-bottom: 5px;"><strong>Supporting Previous Efficiency and Resilience Goals:</strong></p>
+                    <ul style="margin-bottom: 0;">
+                        <li><strong>Advanced Failure Isolation:</strong> If a specialized AI component analyzing an external medical imagery feed suffers from a memory overflow or processing hang, it can be containerized, taken offline, and hot-swapped autonomously.</li>
+                        <li><strong>Continuous Service Availability:</strong> Because the core operational services (the Authentication Provider and Clinical Records Service) exist as independent components entirely separate from the analytics engine, a failure in the AI layer has zero capacity to take down patient check-ins or database lookup lines. This guarantees uncompromised business continuity and reinforces the sociotechnical resilience frameworks established previously.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+            <div class="instructor-only">
+                <strong>📝 Instructor Score:</strong> [Leave Blank — For Instructor Use Only]
+                <br><strong>Midterm Exam 1:</strong> Week 8 (30%)
+            </div>
+        </div>
+
+        <!-- WEEK 09 -->
+        <div class="card evidence-card">
+            <span class="week-badge">WEEK 09</span>
+            <h3>CLASS 08 · Distributed Software Engineering</h3>
+            <p class="topic"><strong>Topics:</strong> Client-Server Architecture, Distributed Component Architecture, Low-Latency Transfer, Failover & Replication, Data-in-Transit Security</p>
+            
+            <div class="evidence-box">
+                <h4>My Evidence (V2): Portfolio Task – Distributed Architecture Plan (Mentcare System)</h4>
+                
+                <div style="margin-top: 15px;">
+                    <h5><strong>Positioning Your System in the Distributed Landscape</strong></h5>
+                    <p style="font-size: 0.95em;">To support massive data distribution, real time medical updates, and extreme system resilience, the Multi-Tier Client-Server Architecture combined with a Distributed Component Architecture is selected for the Mentcare Patient Database System.</p>
+                    
+                    <p style="font-size: 0.95em; margin-bottom: 5px;"><strong>System Requirements Justification:</strong></p>
+                    <ul>
+                        <li><strong>Handling Peak Loads & Scalability:</strong> Clinical operations experience massive bursts of traffic during peak morning check ins, standalone architecture executed within a single device would quickly bottleneck, distributed structure enables on demand computational scaling to handle intensive workloads across loose computing nodes.</li>
+                        <li><strong>Resource and Data Sharing:</strong> Healthcare providers require immediate access to centralized patient histories from geographically separated clinics. A client-server framework facilitates secure resource management, ensuring data consistency while allowing concurrent client applications to consume centralized backend resources.</li>
+                        <li><strong>High Availability & Fault Isolation:</strong> Monolithic applications create an all or nothing risk landscape, distributing services across separate, stateless services guarantees that a localized performance dip or computation error does not collapse the entire ecosystem.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>Distributed Architecture Design & Low-Latency Data Transfer</strong></h5>
+                    <p style="font-size: 0.95em;">The Mentcare system distributes its software components across distinct physical and virtual nodes connected via a secure network layer, maximizing performance and decoupling operations.</p>
+                    
+                    <p style="font-size: 0.95em; margin-bottom: 5px; padding-left: 10px;"><strong>Node Distribution Blueprint:</strong></p>
+                    <p style="font-size: 0.9em; color: #555; padding-left: 10px; margin-top: 0;">The architecture maps components across a multi-tier infrastructure to isolate responsibilities:</p>
+                    <div style="width: 100%; text-align: center; margin: 15px 0;">
+                        <img src="9.png" alt="Multi-Tier Client-Server Architecture Diagram" style="width: 100%; max-width: 800px; height: auto; border: 1px solid #ccc; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    </div>
+                    
+                    <p style="font-size: 0.95em; margin-bottom: 5px; padding-left: 10px;"><strong>Component Distribution Across Nodes:</strong></p>
+                    <ol style="padding-left: 25px; margin-top: 0;">
+                        <li><strong>Client Nodes (Desktop/Mobile Devices):</strong> Execute the stateless user interface applications, local visualization caches, and edge data validation routines.</li>
+                        <li><strong>Application Server Nodes (Cloud Instances):</strong> Host the core business logic components such as the Authentication Provider, the Clinical Records Engine, and the Watchdog Monitoring Thread as decoupled, stateless services.</li>
+                        <li><strong>Data Store Nodes (High-Performance Databases):</strong> Host the physical patient records database, transaction logging ledger, and automated audit trails.</li>
+                    </ol>
+
+                    <p style="font-size: 0.95em; margin-bottom: 5px; margin-top: 15px; padding-left: 10px;"><strong>Strategies for Low Latency Data Transfer:</strong></p>
+                    <p style="font-size: 0.9em; color: #555; padding-left: 10px; margin-top: 0;">To ensure efficient data transfer and minimal delay for real time AI and clinical applications, Mentcare enforces two network optimization techniques:</p>
+                    <ul style="padding-left: 30px;">
+                        <li><strong>Binary Serialization and gRPC Protocols:</strong> Inter node communication between the application server tier and the database tier uses high speed gRPC over HTTP/2, passing highly compressed binary payloads rather than bulky text-based formats.</li>
+                        <li><strong>Edge Caching and Edge Invariant Validation:</strong> Client devices maintain a localized cache memory space for critical emergency metrics. Front facing data is parsed at the edge device, minimizing redundant network roundtrips to the central backend server.</li>
+                    </ul>
+                </div>
+
+                
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>Reliability, Security, & Failover Management</strong></h5>
+                    <p style="font-size: 0.95em; margin-bottom: 5px;"><strong>Failover Plan (Responding to Network/Node Failures):</strong></p>
+                    <p style="font-size: 0.95em; margin-top: 0;">To fulfill the Continuity and Resilience goals established in previous assignments, Mentcare implements a Stateless Service Failover and Replication Schema to handle disruptive events without a platform wide crash:</p>
+                    
+                    <ul>
+                        <li><strong>Handling Application Node Failure:</strong> All application layer servers are engineered as completely stateless services. An intelligent load balancer monitors the health of each node via continuous heartbeat checks. If an Application Node crashes, the load balancer instantly reroutes traffic to a hot-standby instance, ensuring zero service disruption for the user.</li>
+                        <li><strong>Handling Network Outages (Offline Operation State):</strong> If a client node loses network connectivity, the device drops into a degraded Autonomous Offline State. Medical receptionists can still view emergency records through the local read-only cache and log pending clinic updates locally into an append-only transaction log. Once connectivity is restored, the local log replays its entries back to the master data store tier.</li>
+                        <li><strong>Handling Database Node Failure:</strong> The system maintains a Master Slave Active Replication Database Design. If the master database node fails, a failover script promotes the secondary replicated database node to master within seconds, avoiding data decay or system downtime.</li>
+                    </ul>
+
+                    <p style="font-size: 0.95em; margin-bottom: 5px; margin-top: 15px;"><strong>Data in Transit Security Standard:</strong></p>
+                    <p style="font-size: 0.95em; margin-top: 0;">To protect sensitive patient information while it moves across distributed components, the platform enforces strict Transport Layer Security (TLS 1.3) across all network links:</p>
+                    <ul>
+                        <li>All data payloads are fully encrypted using cryptographic algorithms (AES-256-GCM).</li>
+                        <li>Mutual TLS (mTLS) is enforced between internal application nodes and database servers, requiring every independent node to mathematically verify its identity via X.509 digital certificates before exchanging information, completely preventing man-in-the-middle attacks.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>Industry Alignment: Cloud Computing & SaaS Integration</strong></h5>
+                    <p style="font-size: 0.95em;">The Mentcare distributed infrastructure aligns with modern industry trends by leveraging Cloud Computing and Software as a Service (SaaS) models to scale resource delivery efficiently:</p>
+                    <ul>
+                        <li><strong>On-Demand Elastic Scaling:</strong> By utilizing Platform as a Service (PaaS) and cloud containers, Mentcare completely eliminates the need to provision expensive, over engineered on premise physical servers to accommodate temporary peak loads. The system automatically scales its application server nodes up during heavy clinic shifts and tears them down during off hours, significantly reducing infrastructure costs.</li>
+                        <li><strong>Global Redundancy & Disaster Recovery:</strong> Leveraging cloud infrastructure facilitates multi region data replication. If a natural disaster takes out an entire regional data center, traffic instantly transfers to an alternate geographically isolated cloud availability zone, guaranteeing absolute system survivability, continuous service availability, and unwavering sociotechnical resilience.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+            <div class="instructor-only">
+                <strong>📝 Instructor Score:</strong> [Leave Blank — For Instructor Use Only]
+            </div>
+        </div>
+
+
+        <!-- WEEK 10 -->
+        <div class="card evidence-card">
+            <span class="week-badge">WEEK 10</span>
+            <h3>CLASS 09 ·  System of Systems</h3>
+            <p class="topic"><strong>Topics:</strong> Thin/Fat Clients, 3-Tier/Multi-Tier Architectures, Middleware Services, Failure Isolation, Master-Slave Replication</p>
+            
+            <div class="evidence-box">
+                <h4>My Evidence (V2): Portfolio Task – Multi-tier & Middleware Strategy (Mentcare System)</h4>
+                
+                <div style="margin-top: 15px;">
+                    <h5><strong>Tier Architecture Selection & Justification</strong></h5>
+                    <p style="font-size: 0.95em;">To effectively decouple client operations from data storage and ensure extreme operational resilience, a Multi-Tier Architecture is selected for the Mentcare Patient Database System.</p>
+                    
+                    <p style="font-size: 0.95em; margin-bottom: 5px;"><strong>Justification Based on Planning Factors:</strong></p>
+                    <ul>
+                        <li><strong>Server Overload Management:</strong> In a traditional thin-client model, the central server handles all processing, creating severe performance bottlenecks during peak morning clinical shifts. A multi-tier architecture offloads processing burdens by separating presentation, business logic, and data management onto dedicated, independently scalable layers.</li>
+                        <li><strong>Client-Side Processing Capabilities:</strong> Pure fat-client architectures complicate update deployment and compromise data security. A multitier layout strikes an optimal balance: client terminals handle UI rendering and initial data validation while heavy, secure operations remain isolated on the application tier.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>Multi-tier Architecture & Middleware Definition</strong></h5>
+                    <p style="font-size: 0.95em;">The Mentcare multi-tier ecosystem explicitly segregates responsibilities to facilitate simple maintenance and market adaptability:</p>
+                    <div style="width: 100%; text-align: center; margin: 15px 0;">
+                        <img src="10.png" alt="Multi-Tier Middleware Strategy Pipeline Diagram" style="width: 100%; max-width: 800px; height: auto; border: 1px solid #ccc; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <ul style="list-style-type: none; padding-left: 10px;">
+                        <li style="margin-bottom: 10px;"><strong>A. The Presentation Tier (Client/UI):</strong> This tier consists of stateless web and mobile application interfaces deployed at hospital terminals. Its sole role is capturing clinical user inputs, enforcing basic client-side format validation, and rendering information streams for doctors and medical receptionists.</li>
+                        <li style="margin-bottom: 10px;"><strong>B. The Application Tier (Server):</strong> This middle tier hosts the core functional components including the authentication arovider, clinical records engine, and watchdog monitor running as isolated, stateless services. It processes requests, checks rules, and computes algorithms without maintaining permanent session states.</li>
+                        <li style="margin-bottom: 10px;"><strong>C. The Data Tier (Database):</strong> The bottom tier houses the absolute ground truth datasets, consisting of the Master Patient Database, Audit Ledger, and Replayable Transaction Logs. It handles data persistence, structural indexing, and physical integrity checks.</li>
+                    </ul>
+                    
+                    <p style="font-size: 0.95em; margin-bottom: 5px; margin-top: 15px; padding-left: 10px;"><strong>D. The Role of the Middleware:</strong></p>
+                    <p style="font-size: 0.9em; color: #555; padding-left: 10px; margin-top: 0;">The Middleware acts as the system is nervous system, bridging distributed components and independent services across the application and data tiers. In the Mentcare platform, the middleware delivers three critical capabilities:</p>
+                    <ul style="padding-left: 30px;">
+                        <li><strong>Message Routing and Protocol Translation:</strong> It intercepts client HTTPS REST API requests and translates them into high-speed binary RPC protocols for fast internal server processing.</li>
+                        <li><strong>Service Discovery and Load Balancing:</strong> It tracks the health of stateless application nodes, automatically routing incoming patient data queries to the least utilized instance.</li>
+                        <li><strong>Component Decoupling:</strong> It ensures that separate services communicate via abstract contracts rather than explicit dependencies, preventing a crash in one from causing a domino effect across the system.</li>
+                    </ul>
+                </div>
+
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>Validation, Localized Control, & Failure Handling</strong></h5>
+                    <p style="font-size: 0.95em; margin-bottom: 5px;"><strong>Preventing Silent Failures & Total Collapse:</strong></p>
+                    <p style="font-size: 0.95em; margin-top: 0;">To ensure that a failure in one tier (the Database going down) does not result in a silent failure or total collapse of the UI tier, Mentcare enforces Decoupled Boundary Protections:</p>
+                    <ul>
+                        <li><strong>Asynchronous Timeout Interceptors:</strong> Middleware links are governed by strict watchdog timers. If the database node hangs, the middleware cuts the transaction line before it drains server memory, instantly returning a structured error code.</li>
+                        <li><strong>UI Circuit Breakers:</strong> When the UI tier receives a database timeout error, it switches to a degraded autonomous offline state, instead of crashing or freezing, the UI informs the receptionist of the database status, displays cached emergency records, and diverts new data entries to an append only local storage file until the data tier recovers.</li>
+                    </ul>
+
+                    <p style="font-size: 0.95em; margin-bottom: 5px; margin-top: 15px;"><strong>Master-Slave Model Execution & Responsiveness:</strong></p>
+                    <p style="font-size: 0.95em; margin-top: 0;">To handle distributed read/write demands with real time responsiveness, the data tier utilizes a Master-Slave Replication Design:</p>
+                    <ul>
+                        <li><strong>The Master Node Role:</strong> Maintains definitive control over data updates, all clinical write operations must execute directly on the master node to maintain strict data consistency.</li>
+                        <li><strong>The Slave Nodes Role:</strong> Execute parallel reading tasks, the master constantly replicates transaction logs to multiple slave database instances asynchronously, when thousands of terminal clients query patient records simultaneously, the middleware distributes these read only operations across the slave nodes, offloading the Master node and ensuring sub millisecond responsiveness across all clinics.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>Industry Alignment: Microservices Architecture</strong></h5>
+                    <p style="font-size: 0.95em;">The multi-tier infrastructure is implemented using a Microservices Architecture, a modern industry trend that structures software as a set of separate, stateless services.</p>
+                    
+                    <p style="font-size: 0.95em; margin-bottom: 5px;"><strong>Facilitating Dynamic Scaling and Updates:</strong></p>
+                    <ul>
+                        <li><strong>Independent Scalability:</strong> In a traditional monolithic setup, scaling requires replicating the entire application, with a microservices layout, if morning check ins spark a surge in authentication traffic, the authentication service can be scaled up dynamically across cloud nodes without allocating unnecessary resources to the clinical service or database layers.</li>
+                        <li><strong>Isolated Maintenance and Adaptability:</strong> Engineers can update or modify a single service's code and push it straight to production because services are isolated behind middleware interface boundaries, these updates require zero system wide downtime, allowing the platform to adjust swiftly to changing market needs.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+            <div class="instructor-only">
+                <strong>📝 Instructor Score:</strong> [Leave Blank — For Instructor Use Only]
+            </div>
+        </div>
+
+
+        <!-- WEEK 11 -->
+        <div class="card evidence-card">
+            <span class="week-badge">WEEK 11</span>
+            <h3>GROUP PHASE · Security & Resilience + Software Reuse</h3>
+            <p class="topic"><strong>Topics:</strong> Security Engineering, Resilience Patterns, Software Reuse, Component Composition</p>
+            
+            <div class="evidence-box">
+                <h4>My Evidence (V2):</h4>
+               <p><strong>1. Security &amp; Resilience:</strong> Designed MedAlert access barrier by integrating Role Based Access Control (RBAC), explicitly separating Nurse, Doctor, and Admin contexts, verified via 2FA Firebase Auth. To guard system Availability against server crashes, I configured PM2 Process Manager for auto-restarts and implemented dynamic API rate limiting on Node.js routes to neutralize brute-force vector streams.</p>
+                <p><strong>2. Software Reuse Plan:</strong> Engineered the Medication System's reuse schema by wrapping React.js (frontend UI core) and PostgreSQL (relational database engine) as pre validated system layers. We dynamically integrated Firebase Cloud Messaging (FCM) for push notifications and SendGrid APIs for reliable email alert deliveries, saving 40+ hours of custom network programming while elevating core platform reliability.</p>
+            </div>
+
+            <div class="instructor-only">
+                <strong>📝 Instructor Score:</strong> [Leave Blank — For Instructor Use Only]
+            </div>
+        </div>
+
+
+
+        <!-- WEEK 12 -->
+        <div class="card evidence-card">
+            <span class="week-badge">WEEK 12</span>
+            <h3>GROUP PHASE · Distributed & Component-Based Engineering</h3>
+            <p class="topic"><strong>Topics:</strong> Distributed Systems (Ch.17), Component-Based SE (Ch.16), Architecture Design</p>
+            
+            <div class="evidence-box">
+                <h4>My Evidence (V2):</h4>
+                <p><strong>1. Distributed 3-Tier Execution:</strong> Mapped MedAlert software layers onto a decoupled Multi-Tier Client-Server Architecture. React.js client terminals execute localized UI logic, transmitting requests via stateless HTTPS REST APIs to the application Node.js logic server, which subsequently queries the persistent PostgreSQL data layer, preventing client-side bottlenecks during heavy clinical shifts.</p>
+                <p><strong>2. Component Interface Assembly:</strong> Structured independent, highly encapsulated components (Authentication Provider, Dose Scheduler, Alert Dispatcher, Report Generator) communicating strictly via Provides/Requires contracts. For example, the Alert Dispatcher requires scheduled dosing states from the Data Component to provide trigger signals to the FCM Push Component.</p>
+            </div>
+
+            <div class="instructor-only">
+                <strong>📝 Instructor Score:</strong> [Leave Blank — For Instructor Use Only]
+            </div>
+        </div>
+
+        <!-- WEEK 13 -->
+        <div class="card evidence-card">
+            <span class="week-badge">WEEK 13</span>
+            <h3>GROUP PHASE · Systems of Systems + Code Coverage</h3>
+            <p class="topic"><strong>Topics:</strong> Systems of Systems (Ch.20), Testing Strategies, Coverage Metrics</p>
+            
+            <div class="evidence-box">
+                <h4>My Evidence (V2):</h4>
+               <p><strong>1. System of Systems (SoS) Graceful Isolation:</strong> Positioned MedAlert as an active constituent in a larger clinical System of Systems (integrated with hospital directories and third party SMS gateways). I implemented a failure-containment strategy: if the external SendGrid SMS or FCM notification services fail, MedAlert isolates the outage and falls back instantly to local browser dashboard alerts, preventing silent workflow halts.</p>
+                <p><strong>2. Unit Test Code Coverage:</strong> Formulated automated verification suites using Mocha/Chai for REST endpoints. We achieved 90%+ statement coverage targeting critical input validation paths, ensuring the dose log validators strictly reject any input parameters exceeding safety critical medication limits (Dose > MaxDose), preventing catastrophic runtime errors.</p>
+            </div>
+
+            <div class="instructor-only">
+                <strong>📝 Instructor Score:</strong> [Leave Blank — For Instructor Use Only]
+                <br><strong>Group Project Due:</strong> Week 15 (20%)
+                <br><strong>Lab Work Grade:</strong> Week 15 (10%)
+            </div>
+        </div>
+
+        <!-- WEEK 14 -->
+        <div class="card evidence-card">
+            <span class="week-badge">WEEK 14</span>
+            <h3>FINAL HARVEST · The Final Proof</h3>
+            <p class="topic"><strong>Topics:</strong> Final Integration, Portfolio Compilation, Presentation</p>
+            
+            <div class="evidence-box">
+                <h4>My Evidence:</h4>
+                <!-- ⚠️ EDIT: Final reflection -->
+                <p class="placeholder">Through the HIMMA system, I shifted from a code centric mindset to an evidence based engineering approach. I now understand that software engineering is not just about making features work, but about ensuring that every architectural design and dependability decision is justifiable, traceable, and provably secure. The core principle I will carry into my career is that the burden of proof always falls on the engineer.</p>
+            </div>
+
+            <div class="instructor-only">
+                <strong>📝 Instructor Score:</strong> [Leave Blank — For Instructor Use Only]
+                <br><strong>Final Exam:</strong> Week 16 (30%)
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 03: THE PROJECT -->
+    <!-- ============================================ -->
+    <section id="project">
+        <h2>🚀 The Capstone Project</h2>
+
+        <div class="warning-box">
+            <strong>⚠️ IMPORTANT WARNING:</strong>
+            The project example below (ESAAF - Emergency Response System) is a SAMPLE ONLY. 
+            You MUST replace ALL content with your actual group project details. 
+            Do not submit this example as your own work.
+        </div>
+
+        <!-- ⚠️ EDIT: Replace with your actual project information -->
+        <div style="background: #f0f9ff; border: 2px solid #0ea5e9; padding: 25px; border-radius: 8px; margin: 20px 0;">
+            <h3 style="margin-top: 0; color: #0369a1;">MedAlert Clinic System</h3>
+            <p><strong>Domain:</strong> <span class="placeholder">Medical</span></p>
+            <p><strong>Team Size:</strong> <span class="placeholder">5 Members</span></p>
+            
+            <p class="placeholder">MedAlertClinic is a real time medication tracking system built to prevent clinical dose omission and incorrect administrations. It acts as an active safety net between nurse schedules and patient care ensuring every dose is accurately logged, validated, and accounted for with high dependability.</p>
+        </div>
+
+        <h3>📊 Dependability Metrics</h3>
+        <div class="project-metrics">
+            <div class="metric-card">
+                <div class="icon">⏱</div>
+                <h4>Availability</h4>
+                <!-- ⚠️ EDIT: Your project's availability requirements -->
+                <p class="placeholder">99.9% ready during clinical operational hours (7 AM - 11 PM).</p>
+            </div>
+            <div class="metric-card">
+                <div class="icon">🛡</div>
+                <h4>Reliability</h4>
+                <!-- ⚠️ EDIT: Your project's reliability metrics -->
+                <p class="placeholder">[Zero tolerance silent crashes; comprehensive exception tracking and input boundary validation.]</p>
+            </div>
+            <div class="metric-card">
+                <div class="icon">⚕</div>
+                <h4>Safety</h4>
+                <!-- ⚠️ EDIT: Your project's safety analysis -->
+                <p class="placeholder">Safety lock: Dose limit logic prevents logging any medication volume exceeding MaxDose.</p>
+            </div>
+            <div class="metric-card">
+                <div class="icon">🔒</div>
+                <h4>Security</h4>
+                <!-- ⚠️ EDIT: Your project's security measures -->
+                <p class="placeholder">Rol Based Access (Nurse/Doctor/Admin) with 2FA Firebase encryption in transit.</p>
+            </div>
+            <div class="metric-card">
+                <div class="icon">🔄</div>
+                <h4>Resilience</h4>
+                <!-- ⚠️ EDIT: Your project's resilience strategy -->
+                <p class="placeholder">PM2 auto recovery from server runtime crashes within seconds without clinical data loss.</p>
+            </div>
+        </div>
+
+        <h3>🏗 Architecture & Engineering</h3>
+        <div class="grid">
+            <div class="card">
+                <h4>🔄 Software Reuse</h4>
+                <!-- ⚠️ EDIT: Describe reused components -->
+                <p class="placeholder">Leveraged pre validated React.js, Express, and PostgreSQL frameworks. Integrated Firebase Auth and FCM notification endpoints.</p>
+            </div>
+            <div class="card">
+                <h4>🌐 Distributed Architecture</h4>
+                <!-- ⚠️ EDIT: Describe distributed patterns (Chapter 17) -->
+                <p class="placeholder">Client-Server 3-Tier model decoupling the React UI frontend from the Node.js application REST server and PostgreSQL database nodes.</p>
+            </div>
+            <div class="card">
+                <h4>🧩 Component-Based</h4>
+                <!-- ⚠️ EDIT: Describe component composition (Chapter 16) -->
+                <p class="placeholder">Modular component division separating Authentication, Scheduler Logic, and Logging engines interacting via REST API contracts.</p>
+            </div>
+            <div class="card">
+                <h4>🔗 Systems of Systems</h4>
+                <!-- ⚠️ EDIT: Describe SoS integration (Chapter 20) -->
+                <p class="placeholder">Dynamic integration with external notification services (FCM and SendGrid APIs) utilizing isolated circuit breaker fallbacks.</p>
+            </div>
+            <div class="card">
+                <h4>✅ Code Coverage</h4>
+                <!-- ⚠️ EDIT: Describe testing coverage -->
+                <p class="placeholder">Implemented automated Mocha/Chai test frameworks asserting 90%+ code coverage for high criticality input sanitization and validators.</p>
+            </div>
+            <div class="card">
+                <h4>🛡 Hazard Analysis</h4>
+                <!-- ⚠️ EDIT: Describe fault tree / hazards -->
+                <p class="placeholder">Created detailed Fault Tree Analysis identifying causal failure paths of dose omission to implement preemptive architectural checks.</p>
+            </div>
+        </div>
+
+        <h3>📋 Project Evidence</h3>
+        <ul>
+            <li><strong>Risk Metric:</strong> <span class="placeholder">Rate of Occurrence of Failures (ROCOF) analyzed.</span></li>
+            <li><strong>Architecture Pattern:</strong> <span class="placeholder">Decoupled Client-Server 3-Tier model.</span></li>
+            <li><strong>Safety Standard:</strong> <span class="placeholder">Automated input validation and range constraints.</span></li>
+            <li><strong>V&amp;V Evidence:</strong> <span class="placeholder">Robust automated unit tests verifying API controller validation logic.</span></li>
+        </ul>
+
+        <div style="margin-top: 30px;">
+            <!-- ⚠️ EDIT: Add your actual project links -->
+            <a href="#" class="btn">📄 View Full Documentation →</a>
+            <a href="https://github.com/ShareefAbdoo/MedAlert-CPIT455" class="btn accent">💻 GitHub Repository →</a>
+            <a href="#" class="btn success">▶️ Prototype Demo →</a>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 04: H-STACK REFLECTION -->
+    <!-- ============================================ -->
+    <section id="reflection">
+        <h2>🧠 H-Stack Reflection</h2>
+        
+        <p><em>This section demonstrates your growth mindset and engineering maturity. Be authentic and specific.</em></p>
+
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-bottom: 30px;">
+            <div class="card" style="text-align: center;">
+                <div style="font-size: 2em;">📈</div>
+                <h4>Market Mindset</h4>
+                <p style="font-size: 0.9em;">Delivery quality · Documentation · Iteration</p>
+            </div>
+            <div class="card" style="text-align: center;">
+                <div style="font-size: 2em;">🔍</div>
+                <h4>Evidence-First</h4>
+                <p style="font-size: 0.9em;">From "I know" → "I can prove"</p>
+            </div>
+            <div class="card" style="text-align: center;">
+                <div style="font-size: 2em;">📢</div>
+                <h4>Communication</h4>
+                <p style="font-size: 0.9em;">Clarity expected in industry</p>
+            </div>
+            <div class="card" style="text-align: center;">
+                <div style="font-size: 2em;">⚡</div>
+                <h4>Consistency</h4>
+                <p style="font-size: 0.9em;">Discipline · Commitment to rhythm</p>
+            </div>
+        </div>
+
+        <div class="reflection-card">
+            <h4>❓ What changed in how I think?</h4>
+            <blockquote>
+                <!-- ⚠️ EDIT: Write your authentic reflection -->
+                <p class="placeholder">"I shifted from a code-centric mindset to an evidence-based engineering mindset. I now realize that software engineering isn't just about making features work, but about ensuring every architectural decision is justifiable, traceable, and provably secure."</p>
+            </blockquote>
+        </div>
+
+        <div class="reflection-card">
+            <h4>📈 My biggest V1 → V2 improvement</h4>
+            <blockquote>
+                <!-- ⚠️ EDIT: Describe specific feedback and improvement -->
+                <p class="placeholder">"In my first submission on dependability, I listed the 5 attributes as definitions. After feedback, my V2 applied them to a real system and showed how they interact — that's the difference."</p>
+            </blockquote>
+        </div>
+
+        <div class="reflection-card">
+            <h4>⚖️ Safety vs Reliability — My understanding</h4>
+            <blockquote>
+                <!-- ⚠️ EDIT: Show technical understanding -->
+                <p class="placeholder">"I learned that a system can be 100% reliable according to its code specification and still be completely catastrophic. Reliability means doing exactly what the software was told to do, whereas safety means ensuring the system cannot cause harm even if the specification itself is flawed."</p>
+            </blockquote>
+        </div>
+
+        <div class="reflection-card">
+            <h4>💼 What I will carry into my career</h4>
+            <blockquote>
+                <!-- ⚠️ EDIT: Write your career insight -->
+                <p class="placeholder">"The core principle that the burden of proof always falls on the engineer. Moving forward, I will operate under the rule of "guilty until proven innocent" for critical infrastructure, meaning I will never deploy a high stakes system without a verifiable Safety and Assurance Case."</p>
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 05: CONTACT -->
+    <!-- ============================================ -->
+    <section id="contact">
+        <h2>🤝 Let's Connect</h2>
+        
+        <p>Build Your Network. Build Your Future.</p>
+
+        <div class="privacy-notice">
+            <strong>🔒 Privacy Reminder:</strong> Use professional contact methods only. Do not share personal phone numbers or home addresses.
+        </div>
+
+        <div class="contact-grid">
+            <!-- ⚠️ EDIT: Add your actual links -->
+            <a href="https://www.linkedin.com/in/nazeh-kattan-020689292/" class="contact-btn linkedin" target="_blank">
+                💼 LinkedIn
+            </a>
+            <a href="mailto:nkattan0002@stu.kau.edu.sa" class="contact-btn email">
+                ✉️ Email
+            </a>
+            <a href="https://github.com/Nazeh7" class="contact-btn github" target="_blank">
+                💻 GitHub
+            </a>
+            <a href="Nazeh_Kattan_CV.pdf" class="contact-btn cv">
+                📄 Download CV
+            </a>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="https://www.linkedin.com/in/nazeh-kattan-020689292/" class="btn">View Full LinkedIn Profile →</a>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- FOOTER -->
+    <!-- ============================================ -->
+    <footer>
+        <div class="himma-badge">HIMMA | BUILD YOUR PROOF</div>
+        
+        <!-- ⚠️ EDIT: Update with your name and date -->
+        <p>© 2025 — <span class="placeholder">[Nazeh Kattan]</span> · CPIT-455 Portfolio</p>
+        <p>Faculty of Computing and Information Technology</p>
+        <p>Last Updated: <span class="placeholder">[05/2026]</span> — Version 2.0</p>
+        
+        <div style="margin-top: 20px; font-size: 0.85em; color: #94a3b8;">
+            <p>📚 Textbook: Ian Sommerville, "Software Engineering", 10th Edition (2015)</p>
+            <p>🏛 Department of Information Technology · Fall 2024</p>
+        </div>
+    </footer>
+
+    <!-- ============================================ -->
+    <!-- STUDENT INSTRUCTIONS (Hidden in browser) -->
+    <!-- ============================================ -->
+    <!-- 
+    ╔════════════════════════════════════════════════════════════════╗
+    ║                    STUDENT CHECKLIST                           ║
+    ╠════════════════════════════════════════════════════════════════╣
+    ║  ✅ Replace ALL [placeholder] text with your information       ║
+    ║  ✅ Add your photo (200x200px) in the same folder              ║
+    ║  ✅ Update all links (LinkedIn, GitHub, Project)               ║
+    ║  ✅ Remove the ESAAF example and add YOUR project              ║
+    ║  ✅ Fill in ALL weekly evidence sections                       ║
+    ║  ✅ Write authentic reflections (not copied examples)          ║
+    ║  ✅ Keep instructor-only sections HIDDEN (display: none)       ║
+    ║  ✅ Test all links before submission                           ║
+    ║  ✅ Save as: Portfolio_YourName.html                           ║
+    ║  ✅ Submit by the deadline                                     ║
+    ╚════════════════════════════════════════════════════════════════╝
+    -->
+
+</body>
+</html>
